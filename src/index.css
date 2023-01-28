@@ -1,0 +1,12 @@
+body{
+    margin: 0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+    background: rgba(216,255,0,0.47);
+    background: radial-gradient(circle farthest-side at center center, rgba(216,255,0,0.47) 0%, #ffffff 90%);
+    background: -webkit-radial-gradient(circle farthest-side at center center, rgba(216,255,0,0.47) 0%, #ffffff 90%);
+    background: -moz-radial-gradient(circle farthest-side at center center, rgba(216,255,0,0.47) 0%, #ffffff 90%);
+}
