@@ -16,6 +16,11 @@ border-radius: 30px;
 padding: 20px 10px;
 width: 40rem;
 background: #fff;
+
+@media screen and (max-width: 500px) {
+  width: 240px;
+  height: 380px;
+}
 `;
 
 const AppLabel = styled.span`
