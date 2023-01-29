@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const WeatherInfoIcons = {
     sunrise: "/img/sun.png",
     sunset: "/img/sunset.png",
@@ -7,6 +8,9 @@ export const WeatherInfoIcons = {
     humidity: "/img/humidity.png",
     presure: "/img/presure.png",
 };
+
+/* ------ Style -----*/
+
 
 const WeatherCondition = styled.div`
     display: flex;
@@ -33,11 +37,24 @@ margin: 20px auto;
         font-size: 50px;
     }
 
+    @media screen and (max-width: 500px) {
+    
+        font-size: 20px;
+
+    }
+
 
 `;
 const Logo = styled.img`
     margin-right: 70px;
     width: 200px;
+    
+    @media screen and (max-width: 500px) {
+    
+    width: 90px;
+    margin-right: 0px;
+
+    }
 
 `;
 
@@ -45,7 +62,11 @@ const Location = styled.span`
     font-size: 30px;
     font-weight:bold;
     font-family: 'Yantramanav', sans-serif;
+    @media screen and (max-width: 500px) {
     
+        font-size: 15px;
+
+    }
     
 
 `;
@@ -57,6 +78,11 @@ const WeatherInfoContainer = styled.div`
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
+    @media screen and (max-width: 500px) {
+    
+        font-size: 5px;
+
+    }
 `;
 const InfoContainer = styled.div`
     display: flex;
@@ -68,11 +94,30 @@ const InfoContainer = styled.div`
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+
+    @media screen and (max-width: 500px) {
+    
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            padding:0px;
+            margin: 5px;
+
+
+
+    }
+    
 `;
 
 const InfoIcon = styled.img`
     width: 36px;
     height: 36px;
+    @media screen and (max-width: 500px) {
+    
+        width: 20px;
+        height:20px
+
+    }
 `;
 const InfoLabel = styled.span`
     display: flex;
@@ -87,8 +132,24 @@ const InfoLabel = styled.span`
         text-transform: capitalize; 
         font-family: 'Comic Neue', cursive;
 
+        @media screen and (max-width: 500px) {
+            font-size: 15px;
+
+        }
+
     }
+
+    @media screen and (max-width: 500px) {
+
+        font-size: 15px;
+    }
+
+
+    
 `;
+
+/* ------ Style END -----*/
+
  
 const WeatherInfoComponent=(props)=>{
 
