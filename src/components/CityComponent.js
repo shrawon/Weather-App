@@ -1,48 +1,106 @@
 import { createFactory } from "react";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 
 const WeatherLogo = styled.img`
 width: 200px;
 height: 200px;
 margin: 40px auto;
-`;
+animation: ease-in-out-infinite 1s;
 
-const ChooseCity = styled.span`
-color: black;
-font-size: 17px;
-font-weight: bold;
-font-family: 'Comic Neue', cursive;
-`;
-const Searchbox = styled.form`
-display: flex;
-height: 40px;
-flex-direction: row;
-color: white;
-border: none;
-margin: 20px auto;
-font-family: 'Comic Neue', cursive;
+@keyframes ease-in-out-infinite {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 
-&input{
-    
-    padding: 10px;
-    font-size: 12px;
-    border: 2px;
-    outline: none;
-    font-weight: bold;
 
+
+@media screen and (max-width: 500px) {
+  margin: 60px auto;
+  width: 120px;
+height: 120px;
 }
 
-& button{
-    padding: 10px;
-    font-size: 15px;
-    font-weight: none;
-    border: none;
-    border-radius: 20px;
-    outline: none;
-    background: linear-gradient( to right, white, grey)}
-    cursor: pointer;
-    `;
+`;
+
+
+const Searchbox = styled.form`
+display: flex;
+height: 3.5rem;
+width: 5rem;
+flex-direction: row;
+font-size: 90px;
+justify-content: center;
+margin: 20px auto;
+
+@media screen and (max-width: 500px) {
+  width: 10px;
+  
+  
+}
+
+
+`;
+
+const Input = styled.input.attrs({})`
+height: 50px;
+width: 200px;
+border: none;
+border-bottom: 2px solid;
+border-color: white, 20%;
+background: transparent;
+animation: blink 1s linear infinite;
+font-size: 20px;
+box-shadow: 0px;
+outline: none;
+transition: 0.012s;
+text-align: center;
+
+@keyframes blink {
+  0% {
+    opacity: 2;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+}
+
+@media screen and (max-width: 500px) {
+    width: 50px;
+    
+    
+}
+
+
+`;
+
+
+const StyledButton = styled.button`
+background: transparent;
+border-color: transparent;
+border-radius:20px;
+font-size: 20px;
+color: #000;
+cursor: pointer;
+
+
+&:hover {
+    color: #000;
+
+  }
+`;
+
+
 
 
 
@@ -52,14 +110,13 @@ const CityComponent = (props) => {
     return (
         <>
         <WeatherLogo src = "/img/icon.png"/>
-        <ChooseCity>Find weather of your city</ChooseCity>
         <Searchbox onSubmit={fetchWeather}>
-        <input placeholder="City" onChange={(e)=>updateCity(e.target.value)}/>
-        <button type="submit">
-        Search
-        </button>
-        
+        <Input placeholder=" Type City Name" onChange={(e)=>updateCity(e.target.value)}/>
 
+        <StyledButton type="submit">
+        <FontAwesomeIcon icon={faArrowRight} /> 
+       
+        </StyledButton>
         </Searchbox>
         </>
     )
