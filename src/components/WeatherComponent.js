@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRedo } from "@fortawesome/free-solid-svg-icons";
+
 
 
 export const WeatherInfoIcons = {
@@ -19,7 +22,7 @@ const WeatherCondition = styled.div`
     align-items: center;
     width: 100%;
     justify-content: space-evenly;
-    margin: 30px auto;
+    margin: 20px auto;
 
 `;
 
@@ -50,9 +53,8 @@ const Logo = styled.img`
     width: 200px;
     
     @media screen and (max-width: 500px) {
-    
-    width: 90px;
-    margin-right: 0px;
+        width: 90px;
+        margin-right: 0px;
 
     }
 
@@ -73,7 +75,7 @@ const Location = styled.span`
 
 const WeatherInfoContainer = styled.div`
     display: flex;
-    width: 90%;
+    width:90%
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
@@ -81,6 +83,8 @@ const WeatherInfoContainer = styled.div`
     @media screen and (max-width: 500px) {
     
         font-size: 5px;
+        width: 13rem;
+    margin: auto 20px;
 
     }
 `;
@@ -147,6 +151,26 @@ const InfoLabel = styled.span`
 
     
 `;
+const RefreshButton = styled.button`
+  position: flex;   
+  margin-top: -240px;
+  margin-left: 3px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-size: 1.5rem;
+
+  @media screen and (max-width: 500px) {
+    position: flex;   
+    margin-top: -180px;
+    margin-left: 3px;
+
+}
+`;
+const RefreshIcon = styled(FontAwesomeIcon)`
+  color: #333;
+`;
 
 /* ------ Style END -----*/
 
@@ -176,10 +200,19 @@ const WeatherComponent=(props)=>{
     const getTime = (timeStamp) => {
         return `${new Date(timeStamp * 1000).getHours()} : ${new Date(timeStamp*1000
             ).getMinutes()}`;
+};
+
+    const handleRefresh = () => {
+      window.location.reload();
     };
     
     return <>
+    
+    
     <WeatherCondition>
+    <RefreshButton onClick={handleRefresh}>
+      <RefreshIcon icon={faRedo} />
+    </RefreshButton>
     <Condition>
         <span>{`${Math.floor(weather?.main?.temp -273)}°C`}</span>
         
