@@ -4,6 +4,7 @@ import styled from "styled-components";
 import CityComponent from "./components/CityComponent";
 import WeatherComponent from "./components/WeatherComponent";
 
+
 const API_KEY = "be0078434739527e0af6036d2e11c3a0 ";
 
 const Container = styled.div`
@@ -15,7 +16,7 @@ box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24
 border-radius: 30px;
 padding: 20px 10px;
 width: 40rem;
-background: #fff;
+background: #DFECC6;
 
 @media screen and (max-width: 500px) {
   width: 240px;
@@ -23,18 +24,6 @@ background: #fff;
 }
 `;
 
-const AppLabel = styled.span`
-Color: #000;
-font-size: 50px;
-text-transform: uppercase;
-text-shadow: -15px 5px 20px #ced0d3;
-letter-spacing: -0.05em;
-text-transform: uppercase;
-font-size: 50px;
-transition: all 0.25s ease-out;
-font-weight: bold;
-font-family: 'Comfortaa', cursive;
-`;
 
 
 function App() {
