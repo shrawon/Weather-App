@@ -1,4 +1,5 @@
 import { createFactory } from "react";
+import React, { useState } from 'react';
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -101,25 +102,41 @@ cursor: pointer;
 `;
 
 
-
-
-
 const CityComponent = (props) => {
-    const {updateCity, fetchWeather} = props;
+    const { updateCity, fetchWeather } = props;
+    const [searchResults, setSearchResults] = useState([]);
+    const apiKey = 'YOUR_API_KEY';
+
+    const handleInputChange = async (e) => {
+        const query = e.target.value;
+        updateCity(query);
+        if (query.length > 2) {
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/find?q=${query}&type=like&sort=population&cnt=30&appid=${apiKey}`);
+            const data = await response.json();
+            setSearchResults(data.list);
+        } else {
+            setSearchResults([]);
+        }
+    };
 
     return (
         <>
-        <WeatherLogo src = "/img/icon.png"/>
-        <Searchbox onSubmit={fetchWeather}>
-        <Input placeholder=" Type City Name" onChange={(e)=>updateCity(e.target.value)}/>
-
-        <StyledButton type="submit">
-        <FontAwesomeIcon icon={faArrowRight} /> 
-       
-        </StyledButton>
-        </Searchbox>
+            <WeatherLogo src="/img/icon.png" />
+            <Searchbox onSubmit={fetchWeather}>
+                <Input placeholder="Type City Name" onChange={handleInputChange} />
+                <StyledButton type="submit">
+                    <FontAwesomeIcon icon={faArrowRight} />
+                </StyledButton>
+            </Searchbox>
+            <ResultsContainer>
+                {searchResults.map((place) => (
+                    <div key={place.id}>
+                        {place.name}, {place.sys.country}
+                    </div>
+                ))}
+            </ResultsContainer>
         </>
-    )
-}
- 
+    );
+};
+
 export default CityComponent;
