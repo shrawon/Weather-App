@@ -105,7 +105,7 @@ cursor: pointer;
 const CityComponent = (props) => {
     const { updateCity, fetchWeather } = props;
     const [searchResults, setSearchResults] = useState([]);
-    const apiKey = 'YOUR_API_KEY';
+    const apiKey = 'be0078434739527e0af6036d2e11c3a0';
 
     const handleInputChange = async (e) => {
         const query = e.target.value;
